@@ -5,7 +5,7 @@ import 'package:flutter_application_3/gridvie.dart';
 import 'package:flutter_application_3/gridview.dart';
 import 'package:flutter_application_3/instagram.dart';
 import 'package:flutter_application_3/list_view.dart';
-import 'package:flutter_application_3/screen_task.dart';
+import 'package:flutter_application_3/control_panel.dart';
 import 'package:flutter_application_3/security.dart';
 import 'package:flutter_application_3/stack/task1.dart';
 import 'package:flutter_application_3/task2.dart';
