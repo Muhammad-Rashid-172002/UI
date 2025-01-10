@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_3/T-shirt-polo.dart';
 import 'package:flutter_application_3/Tshirt_shop.dart';
 
 class TShirt extends StatefulWidget {
@@ -20,7 +21,7 @@ class _TShirtState extends State<TShirt> {
     'Half Sleeves T-shirt'
   ];
   List image = [
-    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRvchYWFpyFmidUbc4aH3FXNKNEoVPnTsrc5g&s',
+    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRylD13-T5NZ0JGJdpMKZhs5gMy5lftHuiBAw&s',
     'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRb35B14Z7UkNzD-PDY_Ie1Twm6fCFl--cWsw&s',
     'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRtqmHu_kgqWTIEsX1bSHea7RnTBVqNfFGYfQ&s',
     'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTrkaKXZNybCyLXGFNqIbAI1Pss75Nze460rQ&s',
@@ -67,6 +68,7 @@ class _TShirtState extends State<TShirt> {
                                   alignment: Alignment.bottomRight,
                                   child: Icon(
                                     Icons.favorite,
+                                    color: Colors.white,
                                     size: 10,
                                   )),
                               Image.network(
@@ -82,14 +84,26 @@ class _TShirtState extends State<TShirt> {
                               Container(
                                 height: 20,
                                 width: 60,
-                                child: Text(
-                                  'Buy Now',
-                                  textAlign: TextAlign.center,
+                                child: GestureDetector(
+                                  onTap: () {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) => polo()));
+                                  },
+                                  child: Container(
+                                    height: 60,
+                                    width: 60,
+                                    decoration: BoxDecoration(
+                                        color: Colors.red,
+                                        borderRadius: BorderRadius.circular(8)),
+                                    child: Text(
+                                      'Buy Now',
+                                      textAlign: TextAlign.center,
+                                    ),
+                                  ),
                                 ),
-                                decoration: BoxDecoration(
-                                    color: Colors.red,
-                                    borderRadius: BorderRadius.circular(8)),
-                              ),
+                              )
                             ],
                           ),
                         ),
