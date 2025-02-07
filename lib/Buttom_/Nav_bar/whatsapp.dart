@@ -70,38 +70,52 @@ class ChatsScreen extends StatelessWidget {
     'Sadia',
     'khani'
   ];
+  List massage = [
+    'How are you',
+    'Hi',
+    'What about you',
+    'Good',
+    'Nice to meet you',
+    'Can we meet again',
+    'You reacted',
+    'Reacted to you',
+    'You block this contact',
+    'I am fine'
+  ];
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Padding(
-          padding: const EdgeInsets.only(top: 50, left: 10),
-          child: Row(
-            children: [
-              Text(
-                'WhatsApp',
-                style: TextStyle(
-                    color: Colors.green,
-                    fontSize: 22,
-                    fontWeight: FontWeight.bold),
-              ),
-              SizedBox(
-                width: 170,
-              ),
-              Icon(Icons.camera_enhance_outlined),
-              SizedBox(
-                width: 10,
-              ),
-              Icon(Icons.more_vert)
-            ],
-          ),
+    return Column(children: [
+      Padding(
+        padding: const EdgeInsets.only(top: 50, left: 10),
+        child: Row(
+          children: [
+            Text(
+              'WhatsApp',
+              style: TextStyle(
+                  color: Colors.green,
+                  fontSize: 22,
+                  fontWeight: FontWeight.bold),
+            ),
+            SizedBox(
+              width: 170,
+            ),
+            Icon(Icons.camera_enhance_outlined),
+            SizedBox(
+              width: 10,
+            ),
+            Icon(Icons.more_vert)
+          ],
         ),
-        SizedBox(
-          height: 20,
-        ),
-        Padding(
-          padding: const EdgeInsets.only(left: 10, right: 10),
+      ),
+      SizedBox(
+        height: 20,
+      ),
+      Padding(
+        padding: const EdgeInsets.only(left: 10, right: 10),
+        child: Container(
+          height: 40,
+          width: 350,
           child: TextField(
             decoration: InputDecoration(
                 hintText: 'Search or Ask Meta AI',
@@ -115,71 +129,87 @@ class ChatsScreen extends StatelessWidget {
                 )),
           ),
         ),
-        Expanded(
-            child: ListView.builder(
-                itemCount: 10,
-                itemBuilder: (context, index) {
-                  return Padding(
-                    padding: EdgeInsets.all(7),
-                    child: Row(
-                      children: [
-                        Container(
-                          height: 60,
-                          width: 60,
-                          decoration: BoxDecoration(
-                              color: Colors.amber,
-                              borderRadius: BorderRadius.circular(100)),
-                          clipBehavior: Clip.hardEdge,
-                          child: ClipRRect(
-                            child: Image.network(
-                              image[index],
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Text(name[index]),
-                        ),
-                      ],
+      ),
+      Expanded(
+        child: ListView.builder(
+          itemCount: 10,
+          itemBuilder: (context, index) {
+            return Padding(
+              padding: EdgeInsets.all(7),
+              child: Row(
+                children: [
+                  Container(
+                    height: 60,
+                    width: 60,
+                    decoration: BoxDecoration(
+                      color: Colors.amber,
+                      borderRadius: BorderRadius.circular(100),
                     ),
-                  );
-                })),
-        Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(left: 250),
-              child: Container(
-                height: 50,
-                width: 50,
-                decoration: BoxDecoration(
-                    color: const Color.fromARGB(255, 205, 188, 188),
-                    borderRadius: BorderRadius.circular(10)),
-                child: Icon(
-                  Icons.circle_outlined,
-                  size: 30,
-                  color: Colors.blue,
-                ),
+                    clipBehavior: Clip.hardEdge,
+                    child: ClipRRect(
+                      child: Image.network(
+                        image[index],
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text(
+                      name[index],
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                  Column(
+                    children: [
+                      Text(massage[index]),
+                    ],
+                  ),
+                ],
               ),
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            Padding(
-              padding: const EdgeInsets.only(left: 250, bottom: 20),
-              child: Container(
-                height: 50,
-                width: 50,
-                decoration: BoxDecoration(
-                    color: Colors.green,
-                    borderRadius: BorderRadius.circular(10)),
-                child: Icon(Icons.add_box_rounded),
-              ),
-            )
-          ],
+            );
+          },
         ),
-      ],
-    );
+      ),
+      Column(
+        mainAxisAlignment: MainAxisAlignment.start, // Align children to the top
+        children: [
+          Padding(
+            padding: const EdgeInsets.only(
+              left: 250,
+            ),
+            child: Container(
+              height: 50,
+              width: 50,
+              decoration: BoxDecoration(
+                color: const Color.fromARGB(255, 205, 188, 188),
+                borderRadius: BorderRadius.circular(10),
+              ),
+              child: Icon(
+                Icons.circle_outlined,
+                size: 30,
+                color: Colors.blue,
+              ),
+            ),
+          ),
+          SizedBox(
+            height: 20,
+          ),
+          Padding(
+            padding: const EdgeInsets.only(left: 250, bottom: 20),
+            child: Container(
+              height: 50,
+              width: 50,
+              decoration: BoxDecoration(
+                color: Colors.green,
+                borderRadius: BorderRadius.circular(10),
+              ),
+              child: Icon(Icons.add_box_rounded),
+            ),
+          )
+        ],
+      ),
+    ]);
   }
 }
 
@@ -447,10 +477,11 @@ class CommunitiesScreen extends StatelessWidget {
             width: 200,
             decoration: BoxDecoration(
                 color: Colors.green, borderRadius: BorderRadius.circular(20)),
-            child: Text(
-              'Start your community',
-              textAlign: TextAlign.center,
-              style: TextStyle(fontWeight: FontWeight.bold),
+            child: Center(
+              child: Text(
+                'Start your community',
+                style: TextStyle(fontWeight: FontWeight.bold),
+              ),
             ),
           ),
         ),
