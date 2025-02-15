@@ -20,8 +20,16 @@ class _whatsappScreenState extends State<whatsappScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.green,
+        onPressed: () {},
+        child: const Icon(Icons.add),
+      ),
       body: pages[currentIndex],
       bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
+        showSelectedLabels: true,
+        showUnselectedLabels: true,
         items: [
           BottomNavigationBarItem(icon: Icon(Icons.chat), label: 'Chats'),
           BottomNavigationBarItem(icon: Icon(Icons.update), label: 'Updates'),
@@ -30,8 +38,8 @@ class _whatsappScreenState extends State<whatsappScreen> {
           BottomNavigationBarItem(icon: Icon(Icons.call), label: 'Calls')
         ],
         currentIndex: currentIndex,
-        selectedItemColor: Colors.lightBlue,
-        unselectedItemColor: Colors.black,
+        selectedItemColor: Colors.green,
+        unselectedItemColor: Colors.green,
         onTap: (index) {
           setState(() {
             currentIndex = index;
@@ -58,31 +66,18 @@ class ChatsScreen extends StatelessWidget {
     'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVMUsyqQli5cx0262qhY7tjzIQcPhghTE9Dg&s',
     'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFCJ_MZ2ml6mjMUGIacHKgzqGLLW1_1lo1jA&s',
   ];
-  List name = [
-    'Salman khan',
-    'SRK',
-    'Adnan',
-    'Yamaan',
-    'khan',
-    'King',
-    'Saad',
-    'Areeba',
-    'Sadia',
-    'khani'
+  List massege = [
+    {'name': 'Salman khan', 'massege': 'How are you', 'time': '8:30 PM'},
+    {'name': 'Shah Rukh khan', 'massege': 'Hi', 'time': '9:30 AM'},
+    {'name': 'Adnan khan', 'massege': 'What about you', 'time': '7:00 AM'},
+    {'name': 'Yamaan', 'massege': 'Amazging', 'time': '10:00 PM'},
+    {'name': 'Sudais khan', 'massege': 'Nice to meet you', 'time': '11:30 AM'},
+    {'name': 'Siyab', 'massege': 'I am fine', 'time': '12:30 PM'},
+    {'name': 'Saad', 'massege': 'Hello', 'time': '7:30 AM'},
+    {'name': 'Areeba', 'massege': 'May Allah blass you', 'time': '6:30 PM'},
+    {'name': 'Sadia', 'massege': 'Have a good day', 'time': '2:30 AM'},
+    {'name': 'Sidra', 'massege': 'Thats good', 'time': '8:30 PM'}
   ];
-  List massage = [
-    'How are you',
-    'Hi',
-    'What about you',
-    'Good',
-    'Nice to meet you',
-    'Can we meet again',
-    'You reacted',
-    'Reacted to you',
-    'You block this contact',
-    'I am fine'
-  ];
-
   @override
   Widget build(BuildContext context) {
     return Column(children: [
@@ -132,7 +127,7 @@ class ChatsScreen extends StatelessWidget {
       ),
       Expanded(
         child: ListView.builder(
-          itemCount: 10,
+          itemCount: massege.length,
           itemBuilder: (context, index) {
             return Padding(
               padding: EdgeInsets.all(7),
@@ -154,60 +149,34 @@ class ChatsScreen extends StatelessWidget {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Text(
-                      name[index],
-                      style: TextStyle(fontWeight: FontWeight.bold),
+                    padding: const EdgeInsets.only(left: 10),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          massege[index]["name"]!,
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
+                        Row(
+                          children: [
+                            Icon(
+                              Icons.done_all,
+                              size: 19,
+                            ),
+                            SizedBox(
+                              width: 5,
+                            ),
+                            Text(massege[index]["massege"]!),
+                          ],
+                        ),
+                      ],
                     ),
-                  ),
-                  Column(
-                    children: [
-                      Text(massage[index]),
-                    ],
                   ),
                 ],
               ),
             );
           },
         ),
-      ),
-      Column(
-        mainAxisAlignment: MainAxisAlignment.start, // Align children to the top
-        children: [
-          Padding(
-            padding: const EdgeInsets.only(
-              left: 250,
-            ),
-            child: Container(
-              height: 50,
-              width: 50,
-              decoration: BoxDecoration(
-                color: const Color.fromARGB(255, 205, 188, 188),
-                borderRadius: BorderRadius.circular(10),
-              ),
-              child: Icon(
-                Icons.circle_outlined,
-                size: 30,
-                color: Colors.blue,
-              ),
-            ),
-          ),
-          SizedBox(
-            height: 20,
-          ),
-          Padding(
-            padding: const EdgeInsets.only(left: 250, bottom: 20),
-            child: Container(
-              height: 50,
-              width: 50,
-              decoration: BoxDecoration(
-                color: Colors.green,
-                borderRadius: BorderRadius.circular(10),
-              ),
-              child: Icon(Icons.add_box_rounded),
-            ),
-          )
-        ],
       ),
     ]);
   }
@@ -369,39 +338,6 @@ class UpdateScreen extends StatelessWidget {
             ),
             Text(
                 'Stay updated on topics that matter to you. Find\nchannels to follow bellow'),
-            Padding(
-              padding: const EdgeInsets.only(top: 230, left: 250),
-              child: Column(
-                children: [
-                  Container(
-                    height: 50,
-                    width: 50,
-                    decoration: BoxDecoration(
-                        color: const Color.fromARGB(224, 192, 174, 174),
-                        borderRadius: BorderRadius.circular(10)),
-                    child: Icon(
-                      Icons.edit,
-                      color: Colors.black,
-                      size: 30,
-                    ),
-                  ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  Container(
-                    height: 50,
-                    width: 50,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        color: Colors.green),
-                    child: Icon(
-                      Icons.add_a_photo_rounded,
-                      color: Colors.white,
-                    ),
-                  )
-                ],
-              ),
-            )
           ],
         ),
       ),
@@ -566,19 +502,6 @@ class CallScreen extends StatelessWidget {
         ),
         Text('WhatsApp, tap at the'),
         Text('at the bottom of your\n       screen.'),
-        Padding(
-          padding: const EdgeInsets.only(top: 200, left: 250),
-          child: Container(
-            height: 50,
-            width: 50,
-            decoration: BoxDecoration(
-                color: Colors.green, borderRadius: BorderRadius.circular(10)),
-            child: Icon(
-              Icons.phone,
-              color: Colors.white,
-            ),
-          ),
-        )
       ],
     );
   }
